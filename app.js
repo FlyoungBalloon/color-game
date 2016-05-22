@@ -1,4 +1,5 @@
-var colors = generateRandomColors(6);
+var numberOfSquares = 6;
+var colors = generateRandomColors(numberOfSquares);
 
 var squares = document.getElementsByClassName('square');
 var colorDisplay = document.getElementById('colorDisplay');
@@ -6,6 +7,9 @@ var pickedColor = pickColor();
 var gameMessage = document.getElementById('gameMessage');
 var h1 = document.querySelector('h1');
 var resetButton = document.getElementById('reset');
+var easyButton = document.getElementById('easy');
+var hardButton = document.getElementById('hard');
+
 
 colorDisplay.textContent = pickedColor;
 
@@ -69,7 +73,8 @@ function randomColor(){
 // reset button
 resetButton.addEventListener('click', function(){
   // generate new colors
-  colors = generateRandomColors(6);
+  numberOfSquares = 6;
+  colors = generateRandomColors(numberOfSquares);
   // pick new color from array
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
@@ -77,6 +82,40 @@ resetButton.addEventListener('click', function(){
   for(var i = 0; i < squares.length; i++){
     squares[i].style.background = colors[i];
   }
-  h1.style.background = "#232323";
+  h1.style.background = "steelblue";
   this.textContent = "New Colors";
+});
+
+// difficulty buttons
+easyButton.addEventListener('click', function(){
+  easyButton.classList.add('selected');
+  hardButton.classList.remove('selected');
+  numberOfSquares = 3;
+  colors = generateRandomColors(numberOfSquares);
+  pickedColor = pickColor();
+  colorDisplay.textContent = pickedColor;
+  for(var i = 0; i < squares.length; i++){
+    if(colors[i]){
+      squares[i].style.background = colors[i];
+    } else {
+      squares[i].style.display = "none";
+    }
+  }
+  h1.style.background = "steelblue";
+  resetButton.textContent = "New Colors";
+});
+
+hardButton.addEventListener('click', function(){
+  hardButton.classList.add('selected');
+  easyButton.classList.remove('selected');
+  numberOfSquares = 6;
+  colors = generateRandomColors(numberOfSquares);
+  pickedColor = pickColor();
+  colorDisplay.textContent = pickedColor;
+  for(var i = 0; i < squares.length; i++){
+    squares[i].style.background = colors[i];
+    squares[i].style.display = "block";
+  }
+  h1.style.background = "steelblue";
+  resetButton.textContent = "New Colors";
 });
