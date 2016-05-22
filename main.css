@@ -1,0 +1,30 @@
+body {
+  background-color: #232323;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.square {
+  width: 30%;
+  background-color: purple;
+  float: left;
+  padding-bottom: 30%;
+  margin: 1.66%;
+}
+
+h1 {
+  color: white;
+}
+
+#divider {
+  background-color: white;
+  height: 40px;
+  text-align: center;
+}
+
+.selected {
+  background-color: blue;
+}
